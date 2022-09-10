@@ -1,0 +1,60 @@
+﻿@model SalesManagement.ViewModels.SalesmanDetailsVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Salesman</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Salesman.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Salesman.Name)
+        </dd>
+    </dl>
+</div>
+
+<h4>Sales income per month for current year</h4>
+
+<table class="table table-bordered table-striped col">
+    <thead>
+        <tr>
+            <th>
+                Month
+            </th>
+            <th>
+                Sales
+            </th>
+            <th>
+                Commissions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model.Sales)
+        {
+
+            <tr>
+                <td>
+                    @sale.Month
+                </td>
+                <td>
+                    @sale.Amount
+                </td>
+                <td>
+                    @sale.Commission
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Salesman.Id" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to Salesmen</a>
+</div>

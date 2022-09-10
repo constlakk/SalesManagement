@@ -1,0 +1,72 @@
+﻿@model SalesManagement.ViewModels.SalesmanVM;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Salesmen List</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p
+
+<div class="container">
+
+<div class="row">
+
+<table class="table table-bordered table-striped col">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var salesman in Model.Salesmen)
+        {
+
+            <tr>
+                <td>
+                    @salesman.Id
+                </td>
+                <td>
+                    @salesman.Name
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+</table>
+<table class="table table-bordered table-striped col">
+    <thead>
+        <tr>
+            <th>
+                Total Commission
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var commission in Model.Commissions)
+        {
+
+            <tr>
+                <td>
+                    @commission.Commission
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@commission.SalesmanId" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@commission.SalesmanId" class="btn btn-success">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@commission.SalesmanId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+</div>
+</div>
