@@ -3,6 +3,6 @@
     public class CommissionVM
     {
         public int SalesmanId { get; set; }
-        public decimal Commission { get; set; }
+        public decimal Commission { get; set; } = 0;
     }
 }

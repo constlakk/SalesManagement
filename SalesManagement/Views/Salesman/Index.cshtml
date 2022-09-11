@@ -1,4 +1,4 @@
-﻿@model SalesManagement.ViewModels.SalesmanVM;
+﻿@model IEnumerable<SalesManagement.Models.Salesman>
 @{
     ViewData["Title"] = "Index";
 }
@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var salesman in Model.Salesmen)
+        @foreach(var salesman in Model)
         {
 
             <tr>
@@ -35,34 +35,16 @@
                 <td>
                     @salesman.Name
                 </td>
+                <td>
+                    
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@salesman.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@salesman.Id" class="btn btn-success">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@salesman.Id" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
             
-        }
-    </tbody>
-</table>
-<table class="table table-bordered table-striped col">
-    <thead>
-        <tr>
-            <th>
-                Total Commission
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var commission in Model.Commissions)
-        {
-
-            <tr>
-                <td>
-                    @commission.Commission
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@commission.SalesmanId" class="btn btn-warning">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@commission.SalesmanId" class="btn btn-success">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@commission.SalesmanId" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-
         }
     </tbody>
 </table>

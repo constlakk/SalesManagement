@@ -3,6 +3,7 @@ using SalesManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesManagement.ViewModels;
+using System.Linq;
 
 namespace SalesManagement.Controllers
 {
@@ -17,23 +18,11 @@ namespace SalesManagement.Controllers
 
         public IActionResult Index()
         {
-            // IEnumerable<Salesman> objSalesmanList = _db.Salesmen;
-            // return View(objSalesmanList);
 
-
-            // var obj = _db.Salesmen.FromSqlRaw("SELECT Salesmen.Id, Salesmen.Name, SUM(Sales.Amount) * 0.1 AS Commission\r\nFROM Salesmen, Sales\r\nWHERE Salesmen.Id = Sales.SalesmanId\r\nGROUP BY Sales.SalesmanId, Salesmen.Id, Salesmen.Name").ToList();
-
-            var obj = new SalesmanVM();
-
-            obj.Salesmen = _db.Salesmen.ToList();
-
-            var newObj = _db.Sales.GroupBy(s => s.SalesmanId).Select(s => new CommissionVM { Commission = s.Sum(sa => sa.Commission), SalesmanId = s.Key }).ToList();
-
-            obj.Commissions = newObj;
+            var obj = _db.Salesmen.ToList();
 
             return View(obj);
             
-
         }
 
         //GET

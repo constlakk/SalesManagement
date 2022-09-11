@@ -14,7 +14,7 @@ namespace SalesManagement.Models
         [DisplayName("Sale Date")]
         public DateTime SaleDate { get; set; } 
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public decimal Commission { get; private set; }
+        public decimal Commission { get; set; }
         [Required]
         [DisplayName("Salesman")]
         public int SalesmanId { get; set; }
