@@ -39,6 +39,8 @@ namespace SalesManagement.Migrations
                 principalTable: "Salesmen",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
+
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
